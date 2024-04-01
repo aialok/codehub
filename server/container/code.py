@@ -1,1 +1,2 @@
-#inlcude <iostream>; using namespace std; int main(){cout<<'A'<<endl;}
+for i in range(0,10):
+    print(i)

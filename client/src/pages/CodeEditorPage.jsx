@@ -1,29 +1,46 @@
 import React, { useState } from "react";
 import { useContext } from "react";
-import CodeEditorContext from "../context/Provider/context";
+import { CodeEditorContext } from "../context/Provider/context";
 import axios from "axios";
 import CodeEditor from "../components/CodeEditor";
+import LanguageSelect from "../components/SelectLanguage";
+import { LanguageContext } from "../context/Provider/context";
 
 function CodeEditorPage() {
   const { code } = useContext(CodeEditorContext);
+  const { selectedLanguage } = useContext(LanguageContext);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [output, setOutput] = useState(""); // State to hold the output
+  const [error, setError] = useState(null);
+  // console.log("Selected Language: ", selectedLanguage);
 
   const sendCodeToServer = async (code) => {
     try {
+      setOutput("");
+      setError(null);
       setIsSubmitting(true);
       const response = await axios.post(
         "http://localhost:3000/api/v1/submit-code",
         {
-          language: "javascript",
+          language: selectedLanguage,
           code: code,
         }
       );
       console.log("Response from server: ", response);
       // Assuming server sends back the output
+
       setOutput(response.data.message.stdout);
+
+      if (response.data.message.stderr) {
+        setError(response.data.message.stderr);
+      }
     } catch (error) {
       console.error("Error occurred while submitting code: ", error);
+      if (error.response.data.message.stdout) {
+        setOutput(error.response.data.message.stdout);
+      }
+      console.log("Error response: ", error.response.data.message.stderr);
+      setError(error.response.data.message.stderr || error.message);
     } finally {
       setIsSubmitting(false);
     }
@@ -44,10 +61,13 @@ function CodeEditorPage() {
           Write, compile, and execute your code with ease!
         </p>
       </div>
+      <div>
+        <LanguageSelect />
+      </div>
       <div className="w-full max-w-4xl bg-white rounded-lg shadow-lg overflow-hidden">
         <CodeEditor />
       </div>
-      <div className="w-full max-w-4xl bg-white rounded-b-lg py-8">
+      <div className="w-full max-w-4xl bg-white rounded-b-lg pt-8">
         <div className="flex justify-center mt-4">
           <button
             className={`bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg ${
@@ -69,6 +89,13 @@ function CodeEditorPage() {
               <pre className="whitespace-pre-wrap">{output}</pre>
             ) : (
               <p className="text-gray-600">No output yet.</p>
+            )}
+          </div>
+          <div className="bg-gray-200 p-4 rounded-lg mt-4">
+            {error ? (
+              <pre className="whitespace-pre-wrap">{error}</pre>
+            ) : (
+              <p className="text-gray-600">There is no Error in the code.</p>
             )}
           </div>
         </div>

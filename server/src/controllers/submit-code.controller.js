@@ -30,6 +30,9 @@ export const submitCode = async (req, res) => {
     case "cpp":
       extension = ".cpp";
       break;
+    case "php":
+      extension = ".php";
+      break;
     default:
       extension = ".txt";
   }
@@ -39,9 +42,8 @@ export const submitCode = async (req, res) => {
 
   await writeFile(filePath, code); // Using asynchronous writeFile
 
-  const response = await executeCodeInDocker(filePath, language);
-
   try {
+    const response = await executeCodeInDocker(filePath, language);
     return res.status(200).json({ message: response });
   } catch (error) {
     return res.status(500).json({ message: error });
@@ -67,6 +69,9 @@ const executeCodeInDocker = async (filePath, language) => {
     case "cpp":
       docker = "gcc:latest";
       break;
+    case "php":
+      docker = "php:latest";
+      break;
     default:
       docker = "node:14";
   }
@@ -88,6 +93,9 @@ const executeCodeInDocker = async (filePath, language) => {
       break;
     case "cpp":
       command = "g++";
+      break;
+    case "php":
+      command = "php";
       break;
     default:
       command = "node";

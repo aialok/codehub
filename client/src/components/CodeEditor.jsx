@@ -1,10 +1,12 @@
 import React, { useState, useRef } from "react";
 import Editor from "@monaco-editor/react";
 import { useContext } from "react";
-import CodeEditorContext from "../context/Provider/context";
+import { CodeEditorContext } from "../context/Provider/context";
+import { LanguageContext } from "../context/Provider/context";
 
 function CodeEditor() {
   const { code, setCode } = useContext(CodeEditorContext);
+  const { selectedLanguage } = useContext(LanguageContext);
   const editorRef = useRef(null);
 
   const handleEditorMount = (editor, monaco) => {
@@ -16,11 +18,14 @@ function CodeEditor() {
   };
 
   return (
-    <div className="flex flex-col h-70vh">
+    <div className="flex flex-col h-70vh bg-gray-900">
       <div className="flex-grow">
         <Editor
-          height="50vh"
-          defaultLanguage="javascript"
+          height="40vh"
+          className="pt-2"
+          loading={"Loading..."}
+          defaultLanguage={selectedLanguage}
+          language={selectedLanguage}
           defaultValue={code}
           onChange={onChangeCodeValue}
           onMount={handleEditorMount}

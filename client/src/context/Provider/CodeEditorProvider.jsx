@@ -1,7 +1,7 @@
-import CodeEditorContext from "./context";
+import {CodeEditorContext} from "./context";
 import { useState } from "react";
 const CodeEditorProvider = ({ children }) => {
-  const [code, setCode] = useState("// Start your code here!");
+  const [code, setCode] = useState("");
 
   return (
     <CodeEditorContext.Provider value={{ code, setCode }}>

@@ -2,4 +2,6 @@ import { createContext } from "react";
 
 const CodeEditorContext = createContext(null);
 
-export default CodeEditorContext;
+const LanguageContext = createContext(null);
+
+export { CodeEditorContext, LanguageContext };
