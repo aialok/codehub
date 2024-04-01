@@ -71,8 +71,9 @@ function CodeEditorPage() {
       <div className="w-full max-w-4xl bg-white rounded-b-lg pt-8">
         <div className="flex justify-end items-center space-x-2  mr-10 mt-4">
           <p className="text-lg text-blue-600 font-semibold">
-            {executionTime == 0 ?   "Runtime: 0 ms" :  ` Runtime: ${(executionTime.toFixed(1) - 390).toFixed(2)} ms` }
-          
+            {executionTime == 0
+              ? "Runtime: 0 ms"
+              : ` Runtime: ${(executionTime.toFixed(1) - 390).toFixed(2)} ms`}
           </p>
 
           <button
