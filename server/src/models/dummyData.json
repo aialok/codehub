@@ -1,0 +1,86 @@
+[
+  {
+    "title": "Two Sum",
+    "description": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.",
+    "input": "nums = [2,7,11,15], target = 9",
+    "output": "[0,1]",
+    "sampleInput": ["[2,7,11,15], 9", "[3,2,4], 6", "[3,3], 6"],
+    "sampleOutput": ["[0,1]", "[1,2]", "[0,1]"]
+  },
+  {
+    "title": "Add Two Numbers",
+    "description": "You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.",
+    "input": "l1 = [2,4,3], l2 = [5,6,4]",
+    "output": "[7,0,8]",
+    "sampleInput": [
+      "[2,4,3], [5,6,4]",
+      "[0], [0]",
+      "[9,9,9,9,9,9,9], [9,9,9,9]"
+    ],
+    "sampleOutput": ["[7,0,8]", "[0]", "[8,9,9,9,0,0,0,1]"]
+  },
+  {
+    "title": "Longest Substring Without Repeating Characters",
+    "description": "Given a string s, find the length of the longest substring without repeating characters.",
+    "input": "s = 'abcabcbb'",
+    "output": "3",
+    "sampleInput": ["'abcabcbb'", "'bbbbb'", "'pwwkew'"],
+    "sampleOutput": ["3", "1", "3"]
+  },
+  {
+    "title": "Median of Two Sorted Arrays",
+    "description": "Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.",
+    "input": "nums1 = [1,3], nums2 = [2]",
+    "output": "2.0",
+    "sampleInput": ["[1,3], [2]", "[1,2], [3,4]", "[0,0], [0,0]"],
+    "sampleOutput": ["2.0", "2.5", "0.0"]
+  },
+  {
+    "title": "Container With Most Water",
+    "description": "Given n non-negative integers a1, a2, ..., an , where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of the line i is at (i, ai) and (i, 0). Find two lines, which, together with the x-axis forms a container, such that the container contains the most water.",
+    "input": "[1,8,6,2,5,4,8,3,7]",
+    "output": "49",
+    "sampleInput": ["[1,8,6,2,5,4,8,3,7]", "[1,1]", "[4,3,2,1,4]", "[1,2,1]"],
+    "sampleOutput": ["49", "1", "16", "2"]
+  },
+  {
+    "title": "Longest Palindromic Substring",
+    "description": "Given a string s, return the longest palindromic substring in s.",
+    "input": "s = 'babad'",
+    "output": "'bab' or 'aba'",
+    "sampleInput": ["'babad'", "'cbbd'", "'a'"],
+    "sampleOutput": ["'bab'", "'bb'", "'a'"]
+  },
+  {
+    "title": "ZigZag Conversion",
+    "description": "The string 'PAYPALISHIRING' is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility).",
+    "input": "s = 'PAYPALISHIRING', numRows = 3",
+    "output": "'PAHNAPLSIIGYIR'",
+    "sampleInput": ["'PAYPALISHIRING', 3", "'PAYPALISHIRING', 4", "'A', 1"],
+    "sampleOutput": ["'PAHNAPLSIIGYIR'", "'PINALSIGYAHRPI'", "'A'"]
+  },
+  {
+    "title": "Reverse Integer",
+    "description": "Given a signed 32-bit integer x, return x with its digits reversed.",
+    "input": "x = 123",
+    "output": "321",
+    "sampleInput": ["123", "-123", "120"],
+    "sampleOutput": ["321", "-321", "21"]
+  },
+  {
+    "title": "String to Integer (atoi)",
+    "description": "Implement the myAtoi(string s) function, which converts a string to a 32-bit signed integer (similar to C/C++'s atoi function).",
+    "input": "s = '42'",
+    "output": "42",
+    "sampleInput": ["'42'", "'   -42'", "'4193 with words'", "'words and 987'"],
+    "sampleOutput": ["42", "-42", "4193", "0"]
+  },
+  {
+    "title": "Palindrome Number",
+    "description": "Given an integer x, return true if x is palindrome integer.",
+    "input": "x = 121",
+    "output": "true",
+    "sampleInput": ["121", "-121", "10"],
+    "sampleOutput": ["true", "false", "false"]
+  }
+]

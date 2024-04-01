@@ -1,8 +1,8 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import Editor from "@monaco-editor/react";
 import { useContext } from "react";
-import { CodeEditorContext } from "../context/Provider/context";
-import { LanguageContext } from "../context/Provider/context";
+import { CodeEditorContext } from "../../context/Provider/context";
+import { LanguageContext } from "../../context/Provider/context";
 
 function CodeEditor() {
   const { code, setCode } = useContext(CodeEditorContext);
@@ -11,6 +11,9 @@ function CodeEditor() {
 
   const handleEditorMount = (editor, monaco) => {
     editorRef.current = editor;
+    monaco.editor.setTheme = "vs-dark";
+
+    console.log(monaco.editor);
   };
 
   const onChangeCodeValue = (value) => {
@@ -18,18 +21,18 @@ function CodeEditor() {
   };
 
   return (
-    <div className="flex flex-col h-70vh bg-gray-900">
+    <div className="flex flex-col h-60vh">
       <div className="flex-grow">
         <Editor
           height="40vh"
-          className="pt-2"
           loading={"Loading..."}
           defaultLanguage={selectedLanguage}
           language={selectedLanguage}
           defaultValue={code}
           onChange={onChangeCodeValue}
           onMount={handleEditorMount}
-          theme="vs-dark" // You can change the theme as needed
+          theme="vs-dark"
+          // You can change the theme as needed
         />
       </div>
       {/* You can add additional components below the editor if needed */}

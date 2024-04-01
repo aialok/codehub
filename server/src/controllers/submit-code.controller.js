@@ -44,6 +44,7 @@ export const submitCode = async (req, res) => {
 
   try {
     const response = await executeCodeInDocker(filePath, language);
+
     return res.status(200).json({ message: response });
   } catch (error) {
     return res.status(500).json({ message: error });
@@ -108,11 +109,16 @@ const executeCodeInDocker = async (filePath, language) => {
   const pullImage = await execPromisified(`sudo docker pull ${docker}`);
   console.log(pullImage);
 
+  const startTime = process.hrtime();
+
   const { stdout, stderr } = await execPromisified(
     `sudo docker run --rm -v ${path.dirname(
       filePath
     )}:/lets-code -w /lets-code ${docker} ${command} ${path.basename(filePath)}`
   );
+
+  const endTime = process.hrtime(startTime);
+  const executionTime = (endTime[0] * 1e9 + endTime[1]) / 1e6;
 
   console.log(
     `sudo docker run --rm -v ${path.dirname(
@@ -122,5 +128,5 @@ const executeCodeInDocker = async (filePath, language) => {
 
   console.log(stdout);
 
-  return { stdout, stderr };
+  return { stdout, stderr, executionTime };
 };
