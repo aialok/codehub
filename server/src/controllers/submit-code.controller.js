@@ -1,0 +1,118 @@
+import fs from "fs";
+import path from "path";
+import { promisify } from "util";
+import { exec } from "child_process";
+
+const writeFile = promisify(fs.writeFile);
+const __dirname = path.dirname(new URL(import.meta.url).pathname);
+const execPromisified = promisify(exec);
+
+export const submitCode = async (req, res) => {
+  let { code, language } = req.body;
+  console.log("Code: ", req.body);
+  language = language.toLowerCase();
+
+  let extension;
+
+  switch (language) {
+    case "javascript":
+      extension = ".js";
+      break;
+    case "python":
+      extension = ".py";
+      break;
+    case "java":
+      extension = ".java";
+      break;
+    case "ruby":
+      extension = ".rb";
+      break;
+    case "cpp":
+      extension = ".cpp";
+      break;
+    default:
+      extension = ".txt";
+  }
+
+  const filePath = path.join(__dirname, "../../container/code" + extension);
+  console.log("File Path: ", filePath);
+
+  await writeFile(filePath, code); // Using asynchronous writeFile
+
+  const response = await executeCodeInDocker(filePath, language);
+
+  try {
+    return res.status(200).json({ message: response });
+  } catch (error) {
+    return res.status(500).json({ message: error });
+  }
+};
+
+const executeCodeInDocker = async (filePath, language) => {
+  let docker;
+
+  switch (language) {
+    case "javascript":
+      docker = "node:latest";
+      break;
+    case "python":
+      docker = "python:latest";
+      break;
+    case "java":
+      docker = "openjdk:latest";
+      break;
+    case "ruby":
+      docker = "ruby:latest";
+      break;
+    case "cpp":
+      docker = "gcc:latest";
+      break;
+    default:
+      docker = "node:14";
+  }
+
+  let command;
+
+  switch (language) {
+    case "javascript":
+      command = "node";
+      break;
+    case "python":
+      command = "python";
+      break;
+    case "java":
+      command = "java";
+      break;
+    case "ruby":
+      command = "ruby";
+      break;
+    case "cpp":
+      command = "g++";
+      break;
+    default:
+      command = "node";
+  }
+
+  console.log("Docker: ", docker);
+
+  console.log("Executing code in Docker...");
+
+  const pullImage = await execPromisified(`sudo docker pull ${docker}`);
+  console.log(pullImage);
+
+  const { stdout, stderr } = await execPromisified(
+    `sudo docker run --rm -v ${path.dirname(
+      filePath
+    )}:/lets-code -w /lets-code ${docker} ${command} ${path.basename(filePath)}`
+  );
+
+  console.log(
+    `sudo docker run --rm -v ${path.dirname(
+      filePath
+    )}:/lets-code -w /lets-code ${docker} ${command} ${path.basename(filePath)}`
+  );
+
+  console.log(stdout);
+
+  return { stdout, stderr };
+};
