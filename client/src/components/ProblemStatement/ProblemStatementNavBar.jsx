@@ -5,10 +5,10 @@ function ProblemStatementNavBar() {
   return (
     <div>
       <ul className="flex space-x-4 p-8 ml-4">
-        <Link to="/problem Statement">
+        <Link to="/problem-statements">
           {" "}
           <li className="font-semibold text-xl text-white">
-            Problem Statement
+            Problem Statements
           </li>
         </Link>
         <Link to="/submission">

@@ -13,7 +13,7 @@ function CodeEditorPage() {
   const [output, setOutput] = useState(""); // State to hold the output
   const [error, setError] = useState(null);
   const [executionTime, setExecutionTime] = useState(0);
-  // console.log("Selected Language: ", selectedLanguage);
+
 
   const sendCodeToServer = async (code) => {
     try {
@@ -28,20 +28,20 @@ function CodeEditorPage() {
         }
       );
       console.log("Response from server: ", response.data);
-      setOutput(response.data.message.stdout);
+      setOutput(response.data.data.stdout);
 
-      setExecutionTime(response.data.message.executionTime);
+      setExecutionTime(response.data.data.executionTime);
 
-      if (response.data.message.stderr) {
-        setError(response.data.message.stderr);
+      if (response.data.data.stderr) {
+        setError(response.data.data.stderr);
       }
     } catch (error) {
       console.error("Error occurred while submitting code: ", error);
-      if (error.response.data.message.stdout) {
+      if (error.response.data.data.stdout) {
         setOutput(error.response.data.message.stdout);
       }
-      console.log("Error response: ", error.response.data.message.stderr);
-      setError(error.response.data.message.stderr || error.message);
+      console.log("Error response: ", error.response.data.err.stderr);
+      setError(error.response.data.err.stderr || error.message);
     } finally {
       setIsSubmitting(false);
     }
@@ -56,7 +56,7 @@ function CodeEditorPage() {
     <div className="flex flex-col items-center justify-center min-h-screen ">
       <div className="w-full max-w-4xl text-center mb-8">
         <h1 className="text-4xl font-extrabold text-white mt-8 mb-2">
-          Welcome to the Let's Code
+          Welcome to the CodeVerse
         </h1>
         <p className="text-lg text-white">
           Write, compile, and execute your code with ease!

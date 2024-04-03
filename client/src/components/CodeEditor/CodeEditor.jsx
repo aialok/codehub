@@ -11,9 +11,6 @@ function CodeEditor() {
 
   const handleEditorMount = (editor, monaco) => {
     editorRef.current = editor;
-    monaco.editor.setTheme = "vs-dark";
-
-    console.log(monaco.editor);
   };
 
   const onChangeCodeValue = (value) => {

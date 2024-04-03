@@ -2,7 +2,7 @@ import React from 'react'
 
 function Submissiom() {
   return (
-    <div>Submissiom</div>
+    <div className='text-white h-screen'>Submissiom</div>
   )
 }
 
