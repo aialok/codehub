@@ -14,10 +14,9 @@ function CodeEditorPage() {
   const [error, setError] = useState(null);
   const [executionTime, setExecutionTime] = useState(0);
 
-
   const sendCodeToServer = async (code) => {
     try {
-      setOutput("");
+      setOutput("");3
       setError(null);
       setIsSubmitting(true);
       const response = await axios.post(
