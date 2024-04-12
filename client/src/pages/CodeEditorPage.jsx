@@ -16,7 +16,8 @@ function CodeEditorPage() {
 
   const sendCodeToServer = async (code) => {
     try {
-      setOutput("");3
+      setOutput("");
+      3;
       setError(null);
       setIsSubmitting(true);
       const response = await axios.post(
@@ -31,9 +32,9 @@ function CodeEditorPage() {
 
       setExecutionTime(response.data.data.executionTime);
 
-      if (response.data.data.stderr) {
-        setError(response.data.data.stderr);
-      }
+      // if (response.data.data.stderr) {
+      //   setError(response.data.data.stderr);
+      // }
     } catch (error) {
       console.error("Error occurred while submitting code: ", error);
       if (error.response.data.data.stdout) {
@@ -90,7 +91,7 @@ function CodeEditorPage() {
           <h2 className="text-3xl font-bold text-gray-800 ml-4">Output</h2>
           <div className="bg-gray-200 p-4 rounded-lg mt-4">
             {output ? (
-              <pre className="whitespace-pre-wrap">{output}</pre>
+              <pre className="whitespace-pre-wrap overflow-x-auto">{output}</pre>
             ) : (
               <p className="text-gray-600">No output yet.</p>
             )}

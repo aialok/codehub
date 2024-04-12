@@ -65,7 +65,7 @@ function ProblemStatementList() {
   ];
 
   return (
-    <div className="text-white w-full h-screen bg-zinc-500 p-10">
+    <div className="text-white w-full h-screen  p-10">
       <h1 className="text-white text-4xl mb-10">Problem Statement List</h1>
       <table className="table-auto w-full">
         <thead>
