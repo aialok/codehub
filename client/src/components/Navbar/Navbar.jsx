@@ -13,14 +13,16 @@ function Navbar() {
             </Link>
           ))}
         </ul>
-        <div className="flex  items-center gap-4 hover:text-white cursor-pointer">
-          <div className="text-white font-normal text-xl">Alok Gupta</div>
+        <div className="flex items-center gap-4 hover:text-white cursor-pointer">
+         
           <ImFire className="text-white hover:fill-orange-500 " />
+          <Link to="/profile">
           <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4jExqGXHj4gBQbuXB5O84RD8onDJ3GyQYMQ&s"
-            alt=""
-            className="w-[10%] rounded-full"
+            alt="profile"
+            className="w-[16%] rounded-full"
           />
+          </Link>
         </div>
       </nav>
     </div>

@@ -8,6 +8,8 @@ import { Route, Routes } from "react-router-dom";
 import ContestPage from "./pages/ContestPage/ContestPage";
 import Navbar from "./components/Navbar/Navbar";
 import Home2 from "./pages/Home2";
+import TestProblemStatement from "./components/ProblemStatement/TestProblemStatement";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
 
 export default function App() {
   return (
@@ -16,11 +18,14 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home2 />} />
+        <Route path="/test" element={<TestProblemStatement />} />
         <Route path="/problem-statements" element={<ProblemStatementList />} />
         <Route path="/code-editor" element={<CodeEditorPage />} />
         <Route path="/submission" element={<Submissiom />} />
         <Route path="/contest" element={<ContestPage />} />
+        <Route path="/profile" element={<ProfilePage/>} />
       </Routes>
     </div>
   );
 }
+

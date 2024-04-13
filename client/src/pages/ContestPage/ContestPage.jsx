@@ -14,7 +14,8 @@ function ContestPage() {
             My Contests
           </div>
         </div>
-        <div className="contest-lists px-4 ">
+
+        <div className=" contest-lists px-4 ">
           <ContestLists />
           <ContestLists />
           <ContestLists />
