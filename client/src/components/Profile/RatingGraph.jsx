@@ -2,7 +2,7 @@ import { ResponsiveLine } from "@nivo/line";
 
 const data = [
   {
-    id: "ai_alok",
+    id: "Rating",
     color: "hsl(297, 70%, 50%)",
     data: [
       {
