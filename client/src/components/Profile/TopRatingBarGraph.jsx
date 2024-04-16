@@ -29,7 +29,7 @@ const TopRatingBarGraph = () => (
     data={data}
     keys={["users"]}
     indexBy="rating"
-    margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
+    margin={{ top: 30, right: 30, bottom: 40, left: 30 }}
     padding={0.2}
     innerPadding={0.5}
     valueScale={{ type: "linear" }}

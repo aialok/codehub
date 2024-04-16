@@ -3,7 +3,7 @@ import RatingGraph from "./RatingGraph";
 
 function ContestRating() {
   return (
-    <div className="w-full bg-[#282828] p-4 rounded-md mb-4">
+    <div className="w-[49%] bg-[#282828] p-4 rounded-md mb-4">
       <div className="align-start flex w-full">
         <div className="mr-4">
           <div className="font-normal text-sm">Contest Rating</div>

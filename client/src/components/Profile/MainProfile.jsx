@@ -18,7 +18,7 @@ function MainProfile() {
         <div>
           <h1 className="text-xl font-bold mt-2">Alok Gupta</h1>
           <h3 className="text-base text-[#9c9c99]">ai_alok</h3>
-          <p>Rank: 10000</p>
+          <p>Rank: 482</p>
         </div>
       </div>
       <div className="mt-4">
