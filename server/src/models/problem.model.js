@@ -2,37 +2,47 @@ import mongoose from "mongoose";
 
 const problemSchema = new mongoose.Schema({
   title: {
-    type: string,
+    type: String,
     required: true,
   },
   description: {
-    type: string,
+    type: String,
     required: true,
   },
 
   input: {
-    type: string,
+    type: String,
     required: true,
   },
 
   output: {
-    type: string,
+    type: String,
     required: true,
   },
 
   sampleInput: [
     {
-      type: string,
+      type: String,
       required: true,
     },
   ],
 
   sampleOutput: [
     {
-      type: string,
+      type: String,
       required: true,
     },
   ],
+  topic: [
+    {
+      type: String,
+      required: true,
+    },
+  ],
+  difficulty: {
+    type: String,
+    required: true,
+  },
 });
 
 const Problem = mongoose.model("Problem", problemSchema);
