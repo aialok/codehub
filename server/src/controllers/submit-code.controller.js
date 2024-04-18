@@ -13,7 +13,7 @@ const submitCodeController = async (req, res) => {
   } catch (error) {
     return res.status(500).json({
       data: {},
-      message: error.message || "Error submitting code",
+      message: error.message || "Error in submitting code",
       success: false,
       err: error,
     });
