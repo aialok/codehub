@@ -1,4 +1,3 @@
-
 # Codehub
 
 A robust and scalable code execution engine built from scratch, designed to run code snippets in various programming languages securely and efficiently.
@@ -34,13 +33,13 @@ A robust and scalable code execution engine built from scratch, designed to run 
 
 1. Clone the repository
    ```
-   git clone https://github.com/yourusername/code-execution-engine.git
+   git clone https://github.com/aialok/codehub.git
    ```
 
 2. Install dependencies
    ```
    cd code-execution-engine
-   npm install
+   yarn install
    ```
 
 3. Set up environment variables
@@ -51,7 +50,7 @@ A robust and scalable code execution engine built from scratch, designed to run 
 
 4. Run the development server
    ```
-   npm run dev
+   yarn run dev
    ```
 
 ## Usage
